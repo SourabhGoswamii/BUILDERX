@@ -6,9 +6,9 @@ export default function Login() {
   const [otp, setOtp] = useState("");
   const [step, setStep] = useState(1); // Step 1: Phone, Step 2: OTP
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
@@ -174,7 +174,7 @@ export default function Login() {
                   </div>
                   <input 
                     type="text"
-                    maxLength="4"
+                    maxLength={4}
                     value={otp}
                     onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
                     required
